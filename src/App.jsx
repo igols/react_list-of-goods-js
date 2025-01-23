@@ -21,27 +21,21 @@ const reverseSort = 'Reverse';
 const resetSort = 'Reset';
 
 function sorts(buttonName, [...good] = goodsFromServer) {
-  return good.sort((item1, item2) => {
-    const a = [];
+  if (buttonName === reverseSort) {
+    return good.reverse();
+  }
 
+  return good.sort((item1, item2) => {
     switch (buttonName) {
       case alphabetSort:
-        a.push(item1.localeCompare(item2));
-        break;
+        return item1.localeCompare(item2);
 
       case lengthSort:
-        a.push(item1.length - item2.length);
-        break;
-
-      case reverseSort:
-        a.push(item2.localeCompare(item1));
-        break;
+        return item1.length - item2.length;
 
       default:
-        break;
+        return '';
     }
-
-    return a;
   });
 }
 
