@@ -72,18 +72,16 @@ export const App = () => {
         <button
           type="button"
           className={`button is-warning ${buttonName === reverseSort ? '' : 'is-light'}`}
-          onClick={() => buttonSort('Reverse')}
+          onClick={() => buttonSort(reverseSort)}
         >
           {reverseSort}
         </button>
 
-        {(buttonName === alphabetSort ||
-          buttonName === lengthSort ||
-          buttonName === reverseSort) && (
+        {visibleSort.join('') !== goodsFromServer.join('') && (
           <button
             type="button"
-            className={`button  is-danger is-light ${buttonName === resetSort ? '' : 'is-warning'}`}
-            onClick={() => buttonSort('resetSort')}
+            className={`button  is-danger  ${buttonName === resetSort ? 'is-light' : ''}`}
+            onClick={() => buttonSort(resetSort)}
           >
             {resetSort}
           </button>
